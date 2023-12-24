@@ -93,3 +93,25 @@
 
 //Arrow functions
 
+// 1.Syntax 
+// function square(num){
+//     return num*num;
+// };
+// const square = (num)=>{
+//     return num * num;
+// }
+
+// //2- Implicit "return" keyword
+// const square = (num) => num*num;
+//3- arguments
+function fn(){
+    console.log(arguments);
+}
+// fn(1,2,3);
+
+const fnArr = ()=>{
+    console.log(arguments);
+}
+// fn(1,2,3);
+
+//4- this keyword
