@@ -1,6 +1,6 @@
-//Closures in JS 
+//Closures in JS
 
-//Lexical Scope: 
+//Lexical Scope:
 //Scope refers to the current context for your code, it can be either globally or locally defined.
 
 // var name = "Samruddhi here";
@@ -13,12 +13,11 @@
 // }
 // local();
 
-
 // function subscribe(){
 //     var name = "Samruddhi Chavan";
 //     //inner Scope 2
 //     function displayName(){ //Here DisplayName function was able to access the variable outside the scope these is nothing but the closure.
-//         //inner scope 
+//         //inner scope
 //         alert(name);
 //     }
 //       displayName();
@@ -40,7 +39,6 @@
 // }
 // makeFunc()(5);
 
-
 // var e = 10;  (global Scope)
 // function sum(a){ //1
 //     return function (b){ //2
@@ -56,10 +54,8 @@
 
 // console.log(sum(1)(2)(3)(4));
 
-
 // Output based Question
 // Ques 1. What will be logged to console?
-
 
 // let count = 0;
 // (function printCount(){
@@ -71,8 +67,7 @@
 //     console.log(count);//0
 // })();
 
-
-//Ques 2. Write a function that would allow you to do this 
+//Ques 2. Write a function that would allow you to do this
 
 // var addSix = createBase(6);
 // addSix(10); //returns 16
@@ -124,29 +119,130 @@
 
 // for(var i=0;i<3;i++){
 //     setTimeout(function log() {
-//     console.log(i);    
+//     console.log(i);
 //     }, 1000);
 // }
 
-//Using let 
+//Using let
 
 // for(let i=0;i<3;i++){
 //         setTimeout(function log() {
-//         console.log(i);    
+//         console.log(i);
 //         }, 1000);
 //     }
-    
 
 // Using Closures
-    // for (var i = 0; i < 3; i++) {
-    //     (function (index) {
-    //         setTimeout(function log() {
-    //             console.log(index);
-    //         }, 1000 * index);
-    //     })(i);
-    // }
-
+// for (var i = 0; i < 3; i++) {
+//     (function (index) {
+//         setTimeout(function log() {
+//             console.log(index);
+//         }, 1000 * index);
+//     })(i);
+// }
 
 //ques 5. How would you use a closure to create a private counter ?
 
+// function counter(){
+//     var _counter = 0;
 
+//     function add(increment){
+//         _counter += increment;
+//     }
+
+//     function retrieve(){
+//         return "Counter = " + _counter;
+//     }
+//     return{
+//         add,retrieve
+//     };
+// };
+
+// const c = counter();
+// c.add(5);
+// c.add(10);
+
+// console.log(c.retrieve());
+
+//ques 6. What is Module Pattern ?
+
+// var Module = (function(){
+//     function privateMethod(){
+//         //
+//         console.log("public");
+
+//     }
+//     return{
+//         publicMethod:function(){
+//             //can call private Method();
+//             console.log("public");
+//         },
+//     };
+// })();
+
+// Module.publicMethod();
+// Module.privateMethod();
+
+//Ques 7: Make this run only once:
+
+// function SamGoesOn(){
+// view="Samruddhi"
+// console.log("Follow to", view);
+// }
+
+// SamGoesOn();
+// SamGoesOn();
+// SamGoesOn();
+// SamGoesOn();
+// SamGoesOn();
+// SamGoesOn();
+
+// Solution:
+
+// let view;
+// function SamGoesOn() {
+//   let called = 0;
+//   return function () {
+//     if (called > 0) {
+//       console.log("Already follwed to luvlite");
+//     } else {
+//       view = "Samruddhi";
+//       console.log("Follow to", view);
+//       called++;
+//     }
+//   };
+// }
+// let isSubscribed = SamGoesOn();
+
+// isSubscribed();
+// isSubscribed();
+// isSubscribed();
+// isSubscribed();
+// isSubscribed();
+// isSubscribed();
+
+
+
+//Creating a generative function using polyfill
+
+function once(func,context){
+    let ran;
+     
+    return function(){
+        if(func){
+            ran = func.apply(context || this,arguments);
+            func = null;
+        }
+    
+return ran;
+};
+
+}
+
+const hello = once(()=> console.log("hello"));
+
+hello();
+hello();
+hello();
+hello();
+hello();
+hello();
