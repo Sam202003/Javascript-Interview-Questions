@@ -224,25 +224,62 @@
 
 //Creating a generative function using polyfill
 
-function once(func,context){
-    let ran;
+// function once(func,context){
+//     let ran;
      
-    return function(){
-        if(func){
-            ran = func.apply(context || this,arguments);
-            func = null;
-        }
+//     return function(){
+//         if(func){
+//             ran = func.apply(context || this,arguments);
+//             func = null;
+//         }
     
-return ran;
-};
+// return ran;
+// };
 
-}
+// }
 
-const hello = once(()=> console.log("hello"));
+// const hello = once(()=> console.log("hello"));
 
-hello();
-hello();
-hello();
-hello();
-hello();
-hello();
+// hello();
+// hello();
+// hello();
+// hello();
+// hello();
+// hello();
+
+//Ques : Implement Caching/Memoizing function
+
+// function memoize(func) {
+//     let res = {};
+  
+//     return function (...args) {
+//       const argsIndex = JSON.stringify(args);
+//       if (!res[argsIndex]) 
+//                res[argsIndex] = func(...args);
+//       return res[argsIndex];
+//     };
+//   }
+  
+//   const clumsysquare = memoize((num) => {
+//     for (let i = 1; i <= 100000000; i++) {}
+  
+//     return num * 2;
+//   });
+  
+//   console.time("First call");
+//   console.log(clumsysquare(9467));
+//   console.timeEnd("First call");
+  
+//   // use the same value two times
+//   console.time("Second call");
+//   console.log(clumsysquare(9467));
+//   console.timeEnd("Second call");
+  
+
+
+
+//Difference between Closure and Scope
+
+//Closure: Whenever you create a function within another function then the inner function is the closure.This closure usually returns so we can use the outer functions variable at a later Time 
+
+//Scope: Thid defines what variable we have access too there are are two kind of scopes global and local and in closures there are outer,inner and global scope
