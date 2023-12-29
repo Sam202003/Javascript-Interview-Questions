@@ -11,7 +11,7 @@
 // console.log(this.a); //5
 // console.log(this); //{ a: 5 }
 
-
+//
 this.a = 5;
 function getParams() {
 console.log(this.a);
